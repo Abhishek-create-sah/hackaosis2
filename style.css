@@ -1,0 +1,522 @@
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --pastel-blue: #a3c1d4;
+            --pastel-pink: #e8c6d8;
+            --soft-purple: #c4b4d4;
+            --soft-green: #b4d4c4;
+            --text-dark: #333;
+            --text-light: #fefefe;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-strong: rgba(0, 0, 0, 0.2);
+            --yoga-panel-width: 320px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-pink));
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        .main-layout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: all 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 1024px) {
+            .main-layout {
+                align-items: stretch;
+            }
+        }
+
+        /* Language/Age Selection Modal */
+        #onboarding-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-pink));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px var(--shadow-strong);
+            max-width: 400px;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            color: var(--soft-purple);
+        }
+
+        .selection-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .selection-container p {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .lang-btn, .age-btn {
+            background-color: var(--soft-purple);
+            color: var(--text-light);
+            border: none;
+            padding: 12px 24px;
+            margin: 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px var(--shadow-light);
+            min-width: 150px;
+        }
+
+        .lang-btn:hover, .age-btn:hover {
+            background-color: var(--soft-green);
+            transform: translateY(-2px);
+        }
+
+        /* Side Menu */
+        #side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 2px 0 10px var(--shadow-strong);
+            z-index: 50;
+            transition: left 0.3s ease-in-out;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #side-menu.open {
+            left: 0;
+        }
+
+        #side-menu h3 {
+            color: var(--soft-purple);
+        }
+        
+        .mood-btn {
+            background-color: var(--soft-purple);
+            color: var(--text-light);
+            border: none;
+            padding: 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        .mood-btn:hover {
+            background-color: var(--soft-green);
+            transform: translateY(-2px);
+        }
+
+        #menu-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Video Modal */
+        #video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 60;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .video-modal-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px var(--shadow-strong);
+            max-width: 95%;
+            max-height: 95%;
+            position: relative;
+        }
+
+        #video-modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        #header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        #menu-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        #header h1 {
+            margin: 0;
+            font-size: 20px;
+            color: var(--soft-purple);
+            flex-grow: 1;
+        }
+
+        #yoga-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+            display: none;
+        }
+        
+        @media (max-width: 1023px) {
+            #yoga-toggle-btn {
+                display: block;
+            }
+        }
+        
+        /* Mood Indicator */
+        #mood-indicator {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 5px var(--shadow-light);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Chat Area */
+        #chat-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            word-wrap: break-word;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        .message.bot {
+            background-color: var(--soft-green);
+            align-self: flex-start;
+            color: var(--text-dark);
+        }
+
+        .message.user {
+            background-color: var(--soft-purple);
+            align-self: flex-end;
+            color: var(--text-light);
+        }
+
+        .typing-indicator {
+            align-self: flex-start;
+            padding: 12px 18px;
+            background-color: var(--soft-green);
+            border-radius: 18px;
+            box-shadow: 0 2px 5px var(--shadow-light);
+            display: none;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-dark);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing 1.5s infinite ease-in-out;
+            display: inline-block;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Input Area */
+        #input-area {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: -0 -2px 5px var(--shadow-light);
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 2px 4px var(--shadow-light);
+            transition: box-shadow 0.3s;
+        }
+
+        #user-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--soft-purple);
+        }
+
+        #send-btn, #mic-btn {
+            background-color: var(--soft-purple);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        #mic-btn.listening {
+            background-color: #ff6347; /* Tomato */
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #send-btn:hover, #mic-btn:hover {
+            background-color: var(--soft-green);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        #footer {
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Yoga Panel Styles */
+        #yoga-panel {
+            position: absolute;
+            right: -320px;
+            top: 0;
+            height: 100%;
+            width: var(--yoga-panel-width);
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            box-shadow: -2px 0 10px var(--shadow-strong);
+            border-radius: 20px;
+            transition: right 0.5s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 40;
+        }
+
+        #yoga-panel.open {
+            right: 0;
+        }
+
+        @media (min-width: 1024px) {
+            #yoga-panel {
+                position: relative;
+                right: 0;
+                box-shadow: 0 10px 30px var(--shadow-strong);
+            }
+        }
+
+        #yoga-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--soft-purple);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
+        }
+
+        #yoga-panel-header h2 {
+            margin: 0;
+        }
+        
+        #yoga-close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        #yoga-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .yoga-pose-item {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+        
+        .yoga-pose-item:hover {
+            background-color: var(--soft-green);
+            transform: translateY(-2px);
+        }
+        
+        #yoga-details-view {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        
+        .yoga-details-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .yoga-details-header button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .yoga-details-header h3 {
+            margin: 0;
+            color: var(--soft-purple);
+        }
+        
+        .yoga-details-media {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            border-radius: 10px;
+        }
+        
+        .yoga-details-media iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+
+
+        

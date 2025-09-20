@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saarthi - Your Supportive Friend</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <!-- Language & Age Selection Modal -->
+    <div id="onboarding-modal">
+        <div class="modal-content">
+            <div id="language-step">
+                <h2>Select Your Language</h2>
+                <p>Choose your preferred language to begin our conversation.</p>
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="hi">हिंदी</button>
+                <button class="lang-btn" data-lang="bn">বাংলা</button>
+            </div>
+            <div id="age-step" style="display:none;">
+                <h2>Select Your Age Group</h2>
+                <p>This helps me tailor my support to you.</p>
+                <button class="age-btn" data-age="below-20">Below 20</button>
+                <button class="age-btn" data-age="20-45">20 to 45</button>
+                <button class="age-btn" data-age="above-45">Above 45</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Booster Side Menu -->
+    <div id="side-menu">
+        <button id="menu-close-btn">&times;</button>
+        <h3>Mood Boosters</h3>
+        <button class="mood-btn" data-mood="calm">Calm 😌</button>
+        <button class="mood-btn" data-mood="happy">Happy 😊</button>
+        <button class="mood-btn" data-mood="stressed">Stressed 😫</button>
+        <button class="mood-btn" data-mood="sad">Sad 😞</button>
+        <button class="mood-btn" data-mood="angry">Angry 😠</button>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="video-modal">
+        <div class="video-modal-content">
+            <button id="video-modal-close-btn">&times;</button>
+            <iframe id="youtube-player" width="600" height="350" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Main Layout Container -->
+    <div class="main-layout">
+        <!-- Main Chatbot Container -->
+        <div class="container" style="display: none;">
+            <div id="header">
+                <button id="menu-btn">&#9776;</button>
+                <h1>Saarthi</h1>
+                <div id="mood-indicator" title="Your current mood"></div>
+                <button id="yoga-toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </button>
+            </div>
+            
+            <div id="chat-area">
+                <div class="message bot" id="initial-greeting"></div>
+                <div class="typing-indicator" id="typing-indicator">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                </div>
+            </div>
+
+            <div id="input-area">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="mic-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
+                <button id="send-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
+            </div>
+
+            <div id="footer">
+                Take a deep breath. You are doing your best.
+            </div>
+        </div>
+
+        <!-- Yoga Pose Guide Panel -->
+        <div id="yoga-panel">
+            <div id="yoga-panel-header">
+                <h2>Yoga Poses</h2>
+                <button id="yoga-close-btn">&times;</button>
+            </div>
+            <div id="yoga-menu">
+                <!-- Poses will be dynamically added here -->
+            </div>
+            <div id="yoga-details-view" style="display: none;">
+                <div class="yoga-details-header">
+                    <button id="back-to-menu-btn">&larr;</button>
+                    <h3 id="pose-title"></h3>
+                </div>
+                <div id="pose-media-container" class="yoga-details-media"></div>
+                <div>
+                    <h4>Instructions:</h4>
+                    <p id="pose-instructions"></p>
+                    <h4>Benefits:</h4>
+                    <ul id="pose-benefits"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
