@@ -156,7 +156,7 @@
                     },
                 };
 
-                const apiKey = "AIzaSyCKNld6cd0BraRiwMAxu4q9_HhwbijistA";
+                const apiKey = "Here Gemini API key";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
                 const response = await fetch(apiUrl, {
